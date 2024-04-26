@@ -2,26 +2,53 @@ import sqlite3
 
 import click
 from flask import current_app, g
+from .Interfaces.i_data_sorage import IdStorage
 
-def get_db():
+class DbStorage(IdStorage):
 
-    if "db" not in g:
+    @staticmethod
+    def get_db():
 
-        g.db = sqlite3.connect(current_app.config['DATABASE'], detect_types=sqlite3.PARSE_DECLTYPES)
-        g.db.row_factory = sqlite3.Row
+        if "db" not in g:
 
-    return g.db
+            g.db = sqlite3.connect(current_app.config['DATABASE'], detect_types=sqlite3.PARSE_DECLTYPES)
+            g.db.row_factory = sqlite3.Row
 
-def close_bd(e=None):
+        return g.db
+
+    @staticmethod
+    def close_bd(e=None):
+        
+        db = g.pop('db', None)
+
+        if db is not None:
+            db.close()
     
-    db = g.pop('db', None)
+    def get_data(self, data):
 
-    if db is not None:
-        db.close()
+        db = DbStorage.get_db()
+        query = f"SELECT * FROM fizz_buzz WHERE request == '{data}' AND active = 1"
+
+        result = db.execute(query).fetchone()
+
+        return result
+    
+    def post_data(self, data):
+
+        
+
+        return 
+    
+    def update_data(self, data):
+        return 
+    
+    def delete_data(self, data):
+        return 
+
 
 def init_bd():
 
-    db = get_db()
+    db = DbStorage.get_db()
 
     with current_app.open_resource('squema.sql') as f:
         db.executescript(f.read().decode('utf8'))
@@ -33,5 +60,5 @@ def init_db_command():
 
 def init_app(app):
     
-    app.teardown_appcontext(close_bd)
+    app.teardown_appcontext(DbStorage.close_bd)
     app.cli.add_command(init_db_command)
