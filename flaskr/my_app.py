@@ -44,3 +44,20 @@ class MyApp():
             return "",204
         else:
             return "Not Found", 404
+        
+    def get_range(self,min_value,max_value):
+
+        sql_result = self.db.get_number_by_range(min_value, max_value)
+
+        if not sql_result:
+            return "Not Found", 404
+        
+        print(sql_result)
+        result = ""
+
+        for row in sql_result:
+            line = f"{row['request']} : {row['result']}\n"
+
+            result = result + line
+        
+        return result, 200

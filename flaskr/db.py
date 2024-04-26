@@ -71,6 +71,15 @@ class DbStorage(IdStorage):
 
         db.commit()
         return 
+    
+    def get_number_by_range(self, min_value, max_value):
+        
+        db = DbStorage.get_db()
+        query = f"SELECT * FROM fizz_buzz WHERE CAST(request AS INTEGER) >= {min_value} AND CAST(request AS INTEGER) <= {max_value} AND active = 1 ORDER BY CAST(request AS INTEGER) ASC"
+
+        result = db.execute(query).fetchall()
+
+        return result
 
 
 def init_bd():

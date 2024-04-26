@@ -45,12 +45,15 @@ def create_app():
     @app.route('/range', methods=('POST',))
     def range_fizzBuzz():
 
-        request_body = request.data
+        request_body = request.json
 
-        # if request.method == 'POST':
+        min_value = request_body['min']
+        max_value = request_body['max']
 
+        if request.method == 'POST':
+            sql_result = system.get_range(min_value, max_value)
 
-        return "Range", 404
+        return sql_result
     
     from . import db
     db.init_app(app)

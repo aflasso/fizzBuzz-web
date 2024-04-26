@@ -21,3 +21,7 @@ class IdStorage(ABC):
     @abstractmethod
     def update_deactive_data(self, data):
         pass
+
+    @abstractmethod
+    def get_number_by_range(self, min_value, max_value):
+        pass
