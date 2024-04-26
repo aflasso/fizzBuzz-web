@@ -24,7 +24,15 @@ class DbStorage(IdStorage):
         if db is not None:
             db.close()
     
-    def get_data(self, data):
+    def get_data_by_number(self, data) -> any:
+        db = DbStorage.get_db()
+        query = f"SELECT * FROM fizz_buzz WHERE request == '{data}'"
+
+        result = db.execute(query).fetchone()
+
+        return result
+
+    def get_active_data_by_number(self, data):
 
         db = DbStorage.get_db()
         query = f"SELECT * FROM fizz_buzz WHERE request == '{data}' AND active = 1"
@@ -35,11 +43,23 @@ class DbStorage(IdStorage):
     
     def post_data(self, data):
 
-        
+        db = DbStorage.get_db()
+        query = f"insert into fizz_buzz (request, result) values ('{data.get('number')}','{data.get('result')}')"
+
+        db.execute(query)
+
+        db.commit()
 
         return 
     
-    def update_data(self, data):
+    def update_active_data(self, number):
+
+        db = DbStorage.get_db()
+        query = f"UPDATE fizz_buzz SET active = 1 WHERE number = '{number}'"
+
+        db.execute(query)
+
+        db.commit()
         return 
     
     def delete_data(self, data):

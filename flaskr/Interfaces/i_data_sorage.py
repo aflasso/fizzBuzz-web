@@ -3,7 +3,11 @@ from abc import ABC, abstractmethod
 class IdStorage(ABC):
 
     @abstractmethod
-    def get_data(self, data) -> list[any]:
+    def get_active_data_by_number(self, data) -> any:
+        pass
+    
+    @abstractmethod
+    def get_data_by_number(self, data) -> any:
         pass
     
     @abstractmethod
@@ -11,7 +15,7 @@ class IdStorage(ABC):
         pass
 
     @abstractmethod
-    def update_data(self, data):
+    def update_active_data(self, data):
         pass
 
     @abstractmethod

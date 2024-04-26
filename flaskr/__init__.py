@@ -2,10 +2,14 @@ from http import HTTPStatus
 import os
 from flask import Flask, abort, jsonify, make_response, request
 
+from .my_app import MyApp
+
 
 def create_app():
     
     app = Flask(__name__, instance_relative_config=True)
+
+    system = MyApp()
 
     app.config.from_mapping(
         SECRET_KEY= 'dev',
@@ -24,7 +28,18 @@ def create_app():
     @app.route('/fb/<num>', methods=('GET','POST', 'DELETE'))
     def get_fizzBuzz(num):
 
-        return "FizzBuzz", 409
+        if request.method == "GET":
+
+            result = system.get_active_number(num)
+
+            return result
+        
+        if request.method == "POST":
+
+            sql_result = system.post_number(num)
+            return sql_result
+
+        
     
     @app.route('/range', methods=('GET','POST', 'DELETE'))
     def range_fizzBuzz():
