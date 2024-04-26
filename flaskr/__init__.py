@@ -30,19 +30,25 @@ def create_app():
 
         if request.method == "GET":
 
-            result = system.get_active_number(num)
-
-            return result
+            sql_result = system.get_number(num)
+            return sql_result
         
         if request.method == "POST":
 
             sql_result = system.post_number(num)
             return sql_result
-
         
+        if request.method == 'DELETE':
+            sql_result = system.delete_number(num)
+            return sql_result
     
-    @app.route('/range', methods=('GET','POST', 'DELETE'))
+    @app.route('/range', methods=('POST',))
     def range_fizzBuzz():
+
+        request_body = request.data
+
+        # if request.method == 'POST':
+
 
         return "Range", 404
     

@@ -19,5 +19,5 @@ class IdStorage(ABC):
         pass
 
     @abstractmethod
-    def delete_data(self, data):
+    def update_deactive_data(self, data):
         pass

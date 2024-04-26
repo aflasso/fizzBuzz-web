@@ -55,14 +55,21 @@ class DbStorage(IdStorage):
     def update_active_data(self, number):
 
         db = DbStorage.get_db()
-        query = f"UPDATE fizz_buzz SET active = 1 WHERE number = '{number}'"
+        query = f"UPDATE fizz_buzz SET active = 1 WHERE request = '{number}'"
 
         db.execute(query)
 
         db.commit()
         return 
     
-    def delete_data(self, data):
+    def update_deactive_data(self, number):
+
+        db = DbStorage.get_db()
+        query = f"UPDATE fizz_buzz SET active = 0 WHERE request = '{number}'"
+
+        db.execute(query)
+
+        db.commit()
         return 
 
 

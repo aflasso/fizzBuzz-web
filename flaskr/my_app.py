@@ -8,7 +8,7 @@ class MyApp():
         self.fizzBuzz = FizzBuzz()
     
         
-    def get_active_number(self,number):
+    def get_number(self,number):
 
         sql_result = self.db.get_active_data_by_number(number)
 
@@ -34,3 +34,13 @@ class MyApp():
         else:
             self.db.post_data(data)
             return str(data.get('result')) , 201
+            
+    def delete_number(self, num):
+        
+        sql_result_exits = self.db.get_active_data_by_number(num)
+
+        if sql_result_exits is not None:
+            self.db.update_deactive_data(num)
+            return "",204
+        else:
+            return "Not Found", 404
