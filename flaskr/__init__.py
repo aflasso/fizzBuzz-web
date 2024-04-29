@@ -50,7 +50,8 @@ def create_app():
         min_value = request_body['min']
         max_value = request_body['max']
 
-        if request.method == 'POST':
+        if request.method == "POST":
+            print("entre")
             sql_result = system.get_range(min_value, max_value)
 
         return sql_result
