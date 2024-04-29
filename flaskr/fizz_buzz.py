@@ -5,14 +5,6 @@ class FizzBuzz(IProblemSolver):
     
     def __init__(self) -> None:
         pass
-
-    def compute_results(self, data: List[str]) -> List[str]:
-      result = []
-      line = ""
-      for element in data:
-          line =  self.__fizz_buzz(int(element))
-          result.append(element + " " +line)
-      return result
     
     def compute_one_result(self, data: any) -> any:
        
