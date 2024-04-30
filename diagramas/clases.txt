@@ -1,0 +1,73 @@
+@startuml
+
+interface IdStorage{
+
+get_active_data_by_number(data:int)
+
+get_data_by_number(data:int)
+
+post_data(self, data:dict)
+
+update_active_data(data:int)
+
+update_deactive_data(data:int)
+
+get_number_by_range(min_value:int, max_value:int)
+
+}
+
+interface IProblemSolver {
+
+compute_one_result(data)
+
+}
+
+class FizzBuzz {
+
+ compute_one_result(data)
+
+ __fizz_buzz(number: int)
+
+}
+
+class DbStorage {
+
+{static} get_db()
+{static}close_bd(e)
+
+get_active_data_by_number(data:int)
+
+get_data_by_number(data:int)
+
+post_data(self, data:dict)
+
+update_active_data(data:int)
+
+update_deactive_data(data:int)
+
+get_number_by_range(min_value:int, max_value:int)
+
+}
+
+class MyApp {
+
+db: IdStorage
+fizzBuzz: IProblemSolver 
+
+get_number(number:int)
+
+post_number(num:int)
+
+delete_number(num:int)
+
+get_range(min_value:int,max_value:int):
+}
+
+DbStorage ..|> IdStorage
+
+FizzBuzz ..|> IProblemSolver
+
+IProblemSolver --o MyApp
+IdStorage --o MyApp
+
+@enduml
