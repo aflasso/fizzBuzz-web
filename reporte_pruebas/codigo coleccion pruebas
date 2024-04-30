@@ -1,0 +1,608 @@
+{
+	"info": {
+		"_postman_id": "bd600b62-08ec-4c2b-900d-fc24447e805b",
+		"name": "REST API basics: CRUD, test & variable",
+		"description": "# 🚀 Get started here\n\nThis template guides you through CRUD operations (GET, POST, PUT, DELETE), variables, and tests.\n\n## 🔖 **How to use this template**\n\n#### **Step 1: Send requests**\n\nRESTful APIs allow you to perform CRUD operations using the POST, GET, PUT, and DELETE HTTP methods.\n\nThis collection contains each of these [request](https://learning.postman.com/docs/sending-requests/requests/) types. Open each request and click \"Send\" to see what happens.\n\n#### **Step 2: View responses**\n\nObserve the response tab for status code (200 OK), response time, and size.\n\n#### **Step 3: Send new Body data**\n\nUpdate or add new data in \"Body\" in the POST request. Typically, Body data is also used in PUT request.\n\n```\n{\n    \"name\": \"Add your name in the body\"\n}\n\n ```\n\n#### **Step 4: Update the variable**\n\nVariables enable you to store and reuse values in Postman. We have created a [variable](https://learning.postman.com/docs/sending-requests/variables/) called `base_url` with the sample request [https://postman-api-learner.glitch.me](https://postman-api-learner.glitch.me). Replace it with your API endpoint to customize this collection.\n\n#### **Step 5: Add tests in the \"Tests\" tab**\n\nTests help you confirm that your API is working as expected. You can write test scripts in JavaScript and view the output in the \"Test Results\" tab.\n\n<img src=\"https://content.pstmn.io/b5f280a7-4b09-48ec-857f-0a7ed99d7ef8/U2NyZWVuc2hvdCAyMDIzLTAzLTI3IGF0IDkuNDcuMjggUE0ucG5n\">\n\n## 💪 Pro tips\n\n- Use folders to group related requests and organize the collection.\n- Add more [scripts](https://learning.postman.com/docs/writing-scripts/intro-to-scripts/) in \"Tests\" to verify if the API works as expected and execute workflows.\n    \n\n## 💡Related templates\n\n[API testing basics](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=e9a37a28-055b-49cd-8c7e-97494a21eb54&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)  \n[API documentation](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=e9c28f47-1253-44af-a2f3-20dce4da1f18&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)  \n[Authorization methods](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=31a9a6ed-4cdf-4ced-984c-d12c9aec1c27&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30717804"
+	},
+	"item": [
+		{
+			"name": "Get existing fizzbuzz",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var inputs = [{\"number\":\"551669674\",\"result\":\"551669674\"},\t",
+							"{\"number\":\"422356043\",\"result\":\"422356043\"},\t",
+							"{\"number\":\"360061364\",\"result\":\"360061364\"},\t",
+							"{\"number\":\"901352955\",\"result\":\"FizzBuzz\"},\t",
+							"{\"number\":\"858815785\",\"result\":\"Buzz\"},\t",
+							"{\"number\":\"308519689\",\"result\":\"308519689\"},\t",
+							"{\"number\":\"696024202\",\"result\":\"696024202\"},\t",
+							"{\"number\":\"1176711096\",\"result\":\"Fizz\"},\t",
+							"{\"number\":\"589958805\",\"result\":\"FizzBuzz\"},\t",
+							"{\"number\":\"464905687\",\"result\":\"464905687\"},\t",
+							"{\"number\":\"604363876\",\"result\":\"604363876\"},\t",
+							"{\"number\":\"825195979\",\"result\":\"825195979\"},\t",
+							"{\"number\":\"1088834390\",\"result\":\"Buzz\"},\t",
+							"{\"number\":\"50578877\",\"result\":\"50578877\"},\t",
+							"{\"number\":\"805985933\",\"result\":\"805985933\"},\t",
+							"{\"number\":\"682738574\",\"result\":\"682738574\"},\t",
+							"{\"number\":\"300672140\",\"result\":\"Buzz\"},\t",
+							"{\"number\":\"90967924\",\"result\":\"90967924\"},\t",
+							"{\"number\":\"660949840\",\"result\":\"Buzz\"},\t",
+							"{\"number\":\"879085864\",\"result\":\"879085864\"},\t",
+							"{\"number\":\"192969759\",\"result\":\"Fizz\"},\t",
+							"{\"number\":\"926527358\",\"result\":\"926527358\"},\t",
+							"{\"number\":\"140870366\",\"result\":\"140870366\"},\t",
+							"{\"number\":\"839605003\",\"result\":\"839605003\"},\t",
+							"{\"number\":\"440216775\",\"result\":\"FizzBuzz\"},\t",
+							"{\"number\":\"873855426\",\"result\":\"Fizz\"},\t",
+							"{\"number\":\"375853494\",\"result\":\"Fizz\"},\t",
+							"{\"number\":\"189738043\",\"result\":\"189738043\"},\t",
+							"{\"number\":\"695786561\",\"result\":\"695786561\"},\t",
+							"{\"number\":\"488419594\",\"result\":\"488419594\"},\t",
+							"{\"number\":\"868606882\",\"result\":\"868606882\"},\t",
+							"{\"number\":\"133947040\",\"result\":\"Buzz\"},\t",
+							"{\"number\":\"921986667\",\"result\":\"Fizz\"},\t",
+							"{\"number\":\"517347023\",\"result\":\"517347023\"},\t",
+							"{\"number\":\"835021920\",\"result\":\"FizzBuzz\"},\t",
+							"{\"number\":\"123681175\",\"result\":\"Buzz\"},\t",
+							"{\"number\":\"343164502\",\"result\":\"343164502\"},\t",
+							"{\"number\":\"84890313\",\"result\":\"Fizz\"},\t",
+							"{\"number\":\"30830800\",\"result\":\"Buzz\"},\t",
+							"{\"number\":\"552373671\",\"result\":\"Fizz\"},\t",
+							"{\"number\":\"688003559\",\"result\":\"688003559\"},\t",
+							"{\"number\":\"697108161\",\"result\":\"Fizz\"},\t",
+							"{\"number\":\"1194185811\",\"result\":\"Fizz\"},\t",
+							"{\"number\":\"1179404767\",\"result\":\"1179404767\"},\t",
+							"{\"number\":\"775750880\",\"result\":\"Buzz\"},\t",
+							"{\"number\":\"1106562017\",\"result\":\"1106562017\"},\t",
+							"{\"number\":\"1177140958\",\"result\":\"1177140958\"},\t",
+							"{\"number\":\"155483884\",\"result\":\"155483884\"},\t",
+							"{\"number\":\"769940674\",\"result\":\"769940674\"},\t",
+							"{\"number\":\"1131286639\",\"result\":\"1131286639\"},\t",
+							"{\"number\":\"266892455\",\"result\":\"Buzz\"},\t",
+							"{\"number\":\"660951869\",\"result\":\"660951869\"},\t",
+							"{\"number\":\"923364731\",\"result\":\"923364731\"},\t",
+							"{\"number\":\"1076185206\",\"result\":\"Fizz\"},\t",
+							"{\"number\":\"1061779872\",\"result\":\"Fizz\"},\t",
+							"{\"number\":\"1010653036\",\"result\":\"1010653036\"},\t",
+							"{\"number\":\"1196051679\",\"result\":\"Fizz\"},\t",
+							"{\"number\":\"874209896\",\"result\":\"874209896\"},\t",
+							"{\"number\":\"561650495\",\"result\":\"Buzz\"},\t",
+							"{\"number\":\"45597635\",\"result\":\"Buzz\"},\t",
+							"{\"number\":\"18813028\",\"result\":\"18813028\"},\t",
+							"{\"number\":\"950315797\",\"result\":\"950315797\"},\t",
+							"{\"number\":\"810938507\",\"result\":\"810938507\"},\t",
+							"{\"number\":\"575588108\",\"result\":\"575588108\"},\t",
+							"{\"number\":\"650853128\",\"result\":\"650853128\"},\t",
+							"{\"number\":\"219734491\",\"result\":\"219734491\"},\t",
+							"{\"number\":\"735477762\",\"result\":\"Fizz\"},\t",
+							"{\"number\":\"580786735\",\"result\":\"Buzz\"},\t",
+							"{\"number\":\"226040780\",\"result\":\"Buzz\"},\t",
+							"{\"number\":\"761843581\",\"result\":\"761843581\"},\t",
+							"{\"number\":\"457096199\",\"result\":\"457096199\"},\t",
+							"{\"number\":\"208231233\",\"result\":\"Fizz\"},\t",
+							"{\"number\":\"378946892\",\"result\":\"378946892\"},\t",
+							"{\"number\":\"47821305\",\"result\":\"FizzBuzz\"},\t",
+							"{\"number\":\"492977294\",\"result\":\"492977294\"},\t",
+							"{\"number\":\"226685737\",\"result\":\"226685737\"},\t",
+							"{\"number\":\"1058148382\",\"result\":\"1058148382\"},\t",
+							"{\"number\":\"939527881\",\"result\":\"939527881\"},\t",
+							"{\"number\":\"155000967\",\"result\":\"Fizz\"},\t",
+							"{\"number\":\"756063004\",\"result\":\"756063004\"},\t",
+							"{\"number\":\"1029224917\",\"result\":\"1029224917\"},\t",
+							"{\"number\":\"306520696\",\"result\":\"306520696\"},\t",
+							"{\"number\":\"488132406\",\"result\":\"Fizz\"},\t",
+							"{\"number\":\"341653790\",\"result\":\"Buzz\"},\t",
+							"{\"number\":\"292015719\",\"result\":\"Fizz\"},\t",
+							"{\"number\":\"128461953\",\"result\":\"Fizz\"},\t",
+							"{\"number\":\"645661629\",\"result\":\"Fizz\"},\t",
+							"{\"number\":\"330532475\",\"result\":\"Buzz\"},\t",
+							"{\"number\":\"193708184\",\"result\":\"193708184\"},\t",
+							"{\"number\":\"998160272\",\"result\":\"998160272\"},\t",
+							"{\"number\":\"405548355\",\"result\":\"FizzBuzz\"},\t",
+							"{\"number\":\"976166686\",\"result\":\"976166686\"},\t",
+							"{\"number\":\"679911420\",\"result\":\"FizzBuzz\"},\t",
+							"{\"number\":\"800504658\",\"result\":\"Fizz\"},\t",
+							"{\"number\":\"1773224\",\"result\":\"1773224\"},\t",
+							"{\"number\":\"1010362307\",\"result\":\"1010362307\"},\t",
+							"{\"number\":\"778886215\",\"result\":\"Buzz\"},\t",
+							"{\"number\":\"588996418\",\"result\":\"588996418\"},\t",
+							"{\"number\":\"841278293\",\"result\":\"841278293\"},\t",
+							"{\"number\":\"29000124\",\"result\":\"Fizz\"}]",
+							"",
+							"for (let input of inputs) {",
+							"",
+							"    request = {",
+							"        url: \"http://127.0.0.1:5000/fb/\" + input.number,",
+							"        method: 'GET'",
+							"    }",
+							"",
+							"    pm.sendRequest(request, function (err, res){",
+							"    ",
+							"        pm.expect(err).to.be.null;",
+							"        pm.expect(res).to.not.be.undefined;",
+							"",
+							"        pm.test(\"Test status code (200) of \" + \"http://127.0.0.1:5000/fb/\" + input.number, function (){",
+							"            pm.expect(res).to.have.status(200)",
+							"        })",
+							"",
+							"        pm.test(\"Test response of \" + \"http://127.0.0.1:5000/fb/\" + input.number, function (){",
+							"            pm.expect(res.text()).to.equal(input.result)",
+							"        })        ",
+							"    })",
+							"",
+							"}"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/fb/901352955",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"fb",
+						"901352955"
+					]
+				},
+				"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+			},
+			"response": []
+		},
+		{
+			"name": "get not existing fizzBuzz",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"pm.test(\"Status test\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Mesagge not found\", function () {\r",
+							"    pm.response.to.have.body(\"Not Found\")\r",
+							"})"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/fb/15",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"fb",
+						"15"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post new FizzBuzz",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Test response of http://127.0.0.1:5000/fb/0\", function (){\r",
+							"\r",
+							"    pm.expect(pm.response).to.have.status(201)\r",
+							"    pm.response.to.have.body(\"FizzBuzz\")\r",
+							"\r",
+							"})\r",
+							"\r",
+							"\r",
+							"\r",
+							"var inputs = [{\"number\":\"1\",\"result\":\"1\"},\t\r",
+							"{\"number\":\"2\",\"result\":\"2\"},\t\r",
+							"{\"number\":\"3\",\"result\":\"Fizz\"},\t\r",
+							"{\"number\":\"4\",\"result\":\"4\"},\t\r",
+							"{\"number\":\"5\",\"result\":\"Buzz\"}]\r",
+							"\r",
+							"for (let input of inputs){\r",
+							"\r",
+							"    request = {\r",
+							"        url: \"http://127.0.0.1:5000/fb/\" + input.number,\r",
+							"        method: 'POST'\r",
+							"    }\r",
+							"\r",
+							"    pm.sendRequest(request, function (err, res) {\r",
+							"        pm.expect(err).to.be.null;\r",
+							"        pm.expect(res).to.not.be.undefined;\r",
+							"\r",
+							"        pm.test(\"Test status code (201) of \" + \"http://127.0.0.1:5000/fb/\" + input.number, function (){\r",
+							"            pm.expect(res).to.have.status(201)\r",
+							"        })\r",
+							"\r",
+							"        pm.test(\"Test response of http://127.0.0.1:5000/fb/\" + input.number, function () {\r",
+							"            pm.expect(res).to.have.body(input.result)\r",
+							"        })\r",
+							"    })\r",
+							"\r",
+							"}\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/fb/0",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"fb",
+						"0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "activate old fizzBuzz",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var input = {\"number\":\"551669674\",\"result\":\"551669674\"}\r",
+							"\r",
+							"request = {\r",
+							"    url: \"http://127.0.0.1:5000/fb/\" + input.number,\r",
+							"    method: 'POST'\r",
+							"}\r",
+							"\r",
+							"pm.sendRequest(request, function (err, res){\r",
+							"    pm.expect(err).to.be.null;\r",
+							"    pm.expect(res).to.not.be.undefined;\r",
+							"\r",
+							"    pm.test(\"Test status code (200) of \" + \"http://127.0.0.1:5000/fb/\" + input.number, function (){\r",
+							"        pm.expect(res).to.have.status(200)\r",
+							"    })\r",
+							"\r",
+							"    pm.test(\"Test response of http://127.0.0.1:5000/fb/\" + input.number, function () {\r",
+							"        pm.expect(res).to.have.body(input.result)\r",
+							"    })\r",
+							"})\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/fb/551669674",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"fb",
+						"551669674"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "posting existing fizzbuzz",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"let input = {\"number\":\"292015719\",\"result\":\"Fizz\"}\r",
+							"\r",
+							"pm.test(\"Test status code (409) of http://127.0.0.1:5000/fb/292015719\", function (){\r",
+							"    \r",
+							"    pm.expect(pm.response).to.have.status(409)\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Test response of http://127.0.0.1:5000/fb/\" + input.number, function () {\r",
+							"    pm.expect(pm.response).to.have.body(input.result)\r",
+							"})"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/fb/292015719",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"fb",
+						"292015719"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "existing Range request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var inputs = [{\"number\":\"1\",\"result\":\"1\"},\t\r",
+							"{\"number\":\"2\",\"result\":\"2\"},\t\r",
+							"{\"number\":\"3\",\"result\":\"Fizz\"},\t\r",
+							"{\"number\":\"4\",\"result\":\"4\"},\t\r",
+							"{\"number\":\"5\",\"result\":\"Buzz\"},\r",
+							"{\"number\":\"6\",\"result\":\"Fizz\"}]\r",
+							"\r",
+							"let expected_body = \"1 : 1\" + \"\\n\"\r",
+							"                    + \"2 : 2\" + \"\\n\"\r",
+							"                    + \"3 : Fizz\" + \"\\n\"\r",
+							"                    + \"4 : 4\" + \"\\n\"\r",
+							"                    + \"5 : Buzz\" + \"\\n\"\r",
+							"\r",
+							"pm.test(\"Status test\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Test response of \" + \"http://127.0.0.1:5000/fb/range [1,5]\", function () {\r",
+							"    pm.response.to.have.body(expected_body)\r",
+							"})"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"min\": 1,\r\n    \"max\": 18\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/range",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"range"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Not existing range",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Test response of \" + \"http://127.0.0.1:5000/fb/range [1,5]\", function () {\r",
+							"    pm.response.to.have.body(\"Not Found\")\r",
+							"})"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"min\":10,\r\n    \"max\":25\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/range",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"range"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete existing fizzBuzz",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {\r",
+							"    pm.response.to.have.status(204);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Test response of \" + \"http://127.0.0.1:5000/fb/343164502\", function () {\r",
+							"    pm.response.to.have.body(\"No Content\")\r",
+							"})"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/fb/343164502",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"fb",
+						"343164502"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete not existing fizzBuzz",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Test response of \" + \"http://127.0.0.1:5000/fb/343164502\", function () {\r",
+							"    pm.response.to.have.body(\"Not Found\")\r",
+							"})"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/fb/30",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"fb",
+						"30"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "id",
+			"value": "1",
+			"disabled": true
+		},
+		{
+			"key": "base_url",
+			"value": "http://127.0.0.1:5000/fb\n"
+		}
+	]
+}
