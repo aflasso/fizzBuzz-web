@@ -1,9 +1,17 @@
 DROP TABLE IF EXISTS fizz_buzz;
+DROP TABLE IF EXISTS user;
 
 CREATE TABLE fizz_buzz (
     request varchar(100) not null unique,
     result varchar(100) not null,
     active INTEGER not null default 1
+);
+
+CREATE TABLE user (
+    id_user INTEGER not null primary key AUTOINCREMENT,
+    user varchar(20) not null unique,
+    u_password varchar(20) not null,
+    u_role INTEGER not null default 0
 );
 
 INSERT INTO fizz_buzz (request, result) VALUES

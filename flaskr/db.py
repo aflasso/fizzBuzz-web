@@ -2,6 +2,8 @@
 This module contains de data base of the aplication and its configuration
 """
 import sqlite3
+import uuid
+from werkzeug.security import generate_password_hash
 
 import click
 from flask import current_app, g
@@ -101,6 +103,23 @@ def init_bd():
 
     with current_app.open_resource('squema.sql') as f:
         db.executescript(f.read().decode('utf8'))
+
+    data = None
+
+    with current_app.open_resource('root.txt') as f:
+        data = f.readlines()
+        data = [line.decode('utf8').strip() for line in data]
+
+    if data is not None:
+        username = data[0]
+        password = data[1]
+
+        print(password)
+
+        hashed = generate_password_hash(password, method = 'pbkdf2:sha256')
+        db.execute("INSERT INTO user (user, u_password, u_role) VALUES  (?, ?, 1)",
+                        (username, hashed))
+        db.commit()
 
 @click.command('init-db')
 def init_db_command():
