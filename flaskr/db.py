@@ -92,6 +92,15 @@ class DbStorage(IdStorage):
         result = db.execute(query).fetchall()
 
         return result
+    
+    def delete_hard_number(self, data):
+
+        db = DbStorage.get_db()
+        query = f"DELETE FROM fizz_buzz WHERE request = {data}"
+
+        db.execute(query)
+
+        db.commit()
 
 
 def init_bd():
@@ -113,8 +122,6 @@ def init_bd():
     if data is not None:
         username = data[0]
         password = data[1]
-
-        print(password)
 
         hashed = generate_password_hash(password, method = 'pbkdf2:sha256')
         db.execute("INSERT INTO user (user, u_password, u_role) VALUES  (?, ?, 1)",

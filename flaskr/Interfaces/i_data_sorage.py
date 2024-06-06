@@ -39,6 +39,12 @@ class IdStorage(ABC):
         """
 
     @abstractmethod
+    def delete_hard_number(self, data):
+        """
+        This method deletes
+        """
+
+    @abstractmethod
     def get_number_by_range(self, min_value, max_value):
         """
         This method gets data by a int range

@@ -8,6 +8,171 @@
 	},
 	"item": [
 		{
+			"name": "login_valid",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Test response of http://127.0.0.1:5000/auth/login\", function (){\r",
+							"\r",
+							"    pm.expect(pm.response).to.have.status(200)\r",
+							"\r",
+							"})"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "username",
+							"value": "andres",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "silvestre",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/auth/login",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login_invalid",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Test response of http://127.0.0.1:5000/auth/login\", function (){\r",
+							"\r",
+							"    pm.expect(pm.response).to.have.status(401)\r",
+							"\r",
+							"})"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "username",
+							"value": "jesus",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "jesus",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/auth/login",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "register",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Test response of http://127.0.0.1:5000/auth/register\", function (){\r",
+							"\r",
+							"    pm.expect(pm.response).to.have.status(200)\r",
+							"\r",
+							"})"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "username",
+							"value": "silvestre",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "silvestre",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/auth/register",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Get existing fizzbuzz",
 			"event": [
 				{
@@ -568,6 +733,114 @@
 					"path": [
 						"fb",
 						"30"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delte_admin",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"request = {\r",
+							"    url: \"http://127.0.0.1:5000/fb/0\",\r",
+							"    method: 'DELETE'\r",
+							"}\r",
+							"\r",
+							"pm.sendRequest(request, function (err, res){\r",
+							"    \r",
+							"    pm.expect(err).to.be.null;\r",
+							"    pm.expect(res).to.not.be.undefined;\r",
+							"\r",
+							"       pm.test(\"Test status code (204) of \" + \"http://127.0.0.1:5000/fb/0\", function (){\r",
+							"            pm.expect(res).to.have.status(204)\r",
+							"        })\r",
+							"\r",
+							"    pm.test(\"Test response of \" + \"http://127.0.0.1:5000/fb/343164502\", function () {\r",
+							"       pm.expect(res.text()).to.equal(\"\")\r",
+							"    })     \r",
+							"})\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "username",
+							"value": "andres",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "andres",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/auth/login",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "logout",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Test response of http://127.0.0.1:5000/auth/register\", function (){\r",
+							"\r",
+							"    pm.expect(pm.response).to.have.status(200)\r",
+							"\r",
+							"})"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/auth/logout",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"auth",
+						"logout"
 					]
 				}
 			},

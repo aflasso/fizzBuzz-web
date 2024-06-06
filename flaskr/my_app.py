@@ -63,6 +63,16 @@ class MyApp():
 
         return "Not Found", 404
 
+    def delete_hard_number(self, num):
+
+        sql_result_exits = self.db.get_data_by_number(num)
+
+        if sql_result_exits is not None:
+            self.db.delete_hard_number(num)
+            return "",204
+
+        return "Not Found", 404
+
     def get_range(self,min_value,max_value):
         """
         This method returns the numbers and the fizzbuzz values, between to numbers

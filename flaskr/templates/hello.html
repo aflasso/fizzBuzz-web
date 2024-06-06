@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}FizzBuzz - {% if g.user["u_role"] == 1 %} Admin user {% else %} Normal user{% endif %}{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+
+{% endblock %}
